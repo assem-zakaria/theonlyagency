@@ -1,0 +1,206 @@
+/*
+Website Name: OpenDrawing
+Website URL: N/A
+Version: 1.00
+*/
+
+
+/*
+================================================================
+================================================================
+	Basics
+================================================================
+================================================================
+*/
+
+
+    /* ---------------------- */
+    /* Global                 */
+    /* ---------------------- */
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* html.no-scroll {
+            overflow-y: hidden;
+        } */
+
+        body {
+            padding: 0;
+        	font-size: 16px;
+        	line-height: 28px;
+            letter-spacing: 0px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            font-weight: normal;
+            cursor: default;
+            z-index: 0;
+            color: #000;
+            background-color: #fafafa;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        main {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        p {
+            font-weight: normal;
+            color: #000;
+        }
+        a {
+            color: #ffffff;
+        }
+        ul {
+            font-size: 0;
+        }
+        ul li {
+            font-size: 16px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            letter-spacing: 0;
+            font-weight: normal;
+        }
+        h1 {
+        	font-size: 48px;
+        	line-height: 52px;
+        }
+        h2 {
+        	font-size: 32px;
+        	line-height: 42px;
+        }
+        h3 {
+        	font-size: 20px;
+        	line-height: 35px;
+        }
+        h4 {
+        	font-size: 18px;
+        	line-height: 31px;
+        }
+        h5 {
+        	font-size: 14px;
+        	line-height: 25px;
+        }
+        h6 {
+        	font-size: 13px;
+        	line-height: 20px;
+        }
+        section {
+            position: relative;
+        }
+
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 42, 245, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3a3af4;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #59bc7d;
+        }
+
+        ::selection {
+            background-color: #59bc7c;
+            color: #002af5;
+        }
+        ::-moz-selection {
+            background-color: #59bc7c;
+            color: #002af5;
+        }
+
+
+
+/*
+================================================================
+================================================================
+    Intro Loader
+================================================================
+================================================================
+*/
+
+    /* Intro Loader SVG */
+        #theonlyagency_intro_SVG {
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            box-sizing: border-box;
+            clip-path: inset(0 0 0 0);
+            transition: all 1400ms cubic-bezier(0.770, 0.000, 0.175, 1.000) 200ms;
+        }
+
+        #theonlyagency_intro_SVG.hide_intro {
+            clip-path: inset(0 0 100% 0);
+        }
+
+        #PERPETUAL_LETTERS_GROUP path,
+        #THE_ONLY_LETTERS_GROUP path,
+        #BLUE_LOGO { 
+            opacity: 0; 
+        }
+
+
+
+    /* Intro Video */
+        #Layer_1 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #intro_video {
+            height: 100vh;
+            overflow: hidden;
+            box-sizing: border-box;
+            mask-image: url('./images/VideoMaskSVG.svg');
+            -webkit-mask-image: url('./images/VideoMaskSVG.svg');
+            
+            /* mask-size: cover;
+            -webkit-mask-size: cover; */
+        }
+
+        #intro_video video {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+    
+
+
+/*
+================================================================
+================================================================
+    Media Quieries
+================================================================
+================================================================
+*/
+
+    /* ---------------------- */
+    /* Small Devices (Mobile) */
+    /* ---------------------- */
+        @media only screen and (max-width : 1024px) {
+
+
+        }
+
