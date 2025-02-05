@@ -574,6 +574,7 @@ Version: 1.00
 
 
         #what-we-do-section #wwd_svg {
+		display: none;
             position: absolute;
             left: 0;
             top: 0;
