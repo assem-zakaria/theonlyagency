@@ -1543,8 +1543,8 @@
 
                         //  GSAP Config
                             gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
-                            gsap.config({ force3D: true, trialWarn: false });
-                            ScrollTrigger.config({ ignoreMobileResize: true, fastScrollEnd: true });
+                            // gsap.config({ force3D: true, trialWarn: false });
+                            // ScrollTrigger.config({ ignoreMobileResize: true, fastScrollEnd: true });
 
                         //  Update ScrollTrigger on resize
                             let resizeTimeout;
@@ -1572,9 +1572,9 @@
 
 
                 //  Touch Fix at end of code after all scrolltriggers are called
-                    window.addEventListener("touchstart", () => {
-                      ScrollTrigger.refresh();
-                    });
+                    // window.addEventListener("touchstart", () => {
+                    //   ScrollTrigger.refresh();
+                    // });
 
 
             })();
