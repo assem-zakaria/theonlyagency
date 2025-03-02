@@ -1371,83 +1371,83 @@
                               });
 
                         //  Our Clients
-                             gsap.set(".our-clients hr", {
-                                width: 0,
-                            });
+                            //  gsap.set(".our-clients hr", {
+                            //     width: 0,
+                            // });
 
-                            gsap.to(".our-clients hr", { 
-                                width: 100,
-                                duration: 1,
-                                ease: "power3.out",
-                                scrollTrigger: {
-                                    trigger: ".our-clients hr",
-                                    start: "top 80%"
-                                }
-                            });
+                            // gsap.to(".our-clients hr", { 
+                            //     width: 100,
+                            //     duration: 1,
+                            //     ease: "power3.out",
+                            //     scrollTrigger: {
+                            //         trigger: ".our-clients hr",
+                            //         start: "top 80%"
+                            //     }
+                            // });
 
-                            const our_clients_h3_splitText = new SplitText(our_clients_h3_els, { 
-                                type: "chars,words",
-                                charsClass: "letter-div",
-                                wordsClass: "word-div" 
-                            });
+                            // const our_clients_h3_splitText = new SplitText(our_clients_h3_els, { 
+                            //     type: "chars,words",
+                            //     charsClass: "letter-div",
+                            //     wordsClass: "word-div" 
+                            // });
 
-                            gsap.set(our_clients_h3_splitText.chars, {
-                              autoAlpha: 0,
-                              scaleY: 0,
-                              yPercent: 50,
-                              color: "#00ddfd",
-                            });
+                            // gsap.set(our_clients_h3_splitText.chars, {
+                            //   autoAlpha: 0,
+                            //   scaleY: 0,
+                            //   yPercent: 50,
+                            //   color: "#00ddfd",
+                            // });
 
-                            const our_clients_h3_arr = gsap.utils.toArray('.our-clients h3');
+                            // const our_clients_h3_arr = gsap.utils.toArray('.our-clients h3');
                             
-                            our_clients_h3_arr.forEach(el => {
-                              gsap.to(el.querySelectorAll(".letter-div"), { 
-                                autoAlpha: 1,
-                                scaleY: 1,
-                                yPercent: 0,
-                                color: "#000000",
-                                duration: 0.3,
-                                ease: "power3.out",
-                                stagger: 0.05,
-                                scrollTrigger: {
-                                  trigger: el,
-                                  start: "top 80%",
-                                }
-                              })
-                            });
+                            // our_clients_h3_arr.forEach(el => {
+                            //   gsap.to(el.querySelectorAll(".letter-div"), { 
+                            //     autoAlpha: 1,
+                            //     scaleY: 1,
+                            //     yPercent: 0,
+                            //     color: "#000000",
+                            //     duration: 0.3,
+                            //     ease: "power3.out",
+                            //     stagger: 0.05,
+                            //     scrollTrigger: {
+                            //       trigger: el,
+                            //       start: "top 80%",
+                            //     }
+                            //   })
+                            // });
                             
-                            gsap.set([our_clients_p_els, ".our-clients .logos-cont img"], {
-                                autoAlpha: 0,
-                                y: 100
-                            });
+                            // gsap.set([our_clients_p_els, ".our-clients .logos-cont img"], {
+                            //     autoAlpha: 0,
+                            //     y: 100
+                            // });
 
-                            document.querySelectorAll(".our-clients .p-cont").forEach(el => {
-                                gsap.to(el.querySelector("p"), { 
-                                    scrollTrigger: {
-                                        trigger: el,
-                                        start: "top 80%",
-                                        // markers: true
-                                    },
-                                    autoAlpha: 1,
-                                    y: 0,
-                                    duration: 1,
-                                    ease: "power3.out",
-                                    // immediateRender: false
-                                });
-                            });
+                            // document.querySelectorAll(".our-clients .p-cont").forEach(el => {
+                            //     gsap.to(el.querySelector("p"), { 
+                            //         scrollTrigger: {
+                            //             trigger: el,
+                            //             start: "top 80%",
+                            //             // markers: true
+                            //         },
+                            //         autoAlpha: 1,
+                            //         y: 0,
+                            //         duration: 1,
+                            //         ease: "power3.out",
+                            //         // immediateRender: false
+                            //     });
+                            // });
 
-                            gsap.utils.toArray('.our-clients .logos-cont img').forEach(el => {
-                              gsap.to(el, { 
-                                autoAlpha: 1,
-                                y: 0,
-                                duration: 1,
-                                ease: "power3.out",
-                                scrollTrigger: {
-                                  trigger: el,
-                                  start: "top 80%",
-                                }
-                              });
-                            });
+                            // gsap.utils.toArray('.our-clients .logos-cont img').forEach(el => {
+                            //   gsap.to(el, { 
+                            //     autoAlpha: 1,
+                            //     y: 0,
+                            //     duration: 1,
+                            //     ease: "power3.out",
+                            //     scrollTrigger: {
+                            //       trigger: el,
+                            //       start: "top 80%",
+                            //     }
+                            //   });
+                            // });
 
                         //  Contact Section
                             gsap.to("#contact-section-wave-svg textPath", {
