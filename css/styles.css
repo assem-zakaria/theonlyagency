@@ -824,6 +824,7 @@ Version: 1.00
             padding: 75px;
             overflow: hidden;
             display: none;
+            position: relative;
         }
 
 
@@ -852,6 +853,8 @@ Version: 1.00
             border-color: rgb(0, 223, 255);
             margin: 0;
             margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
         }
 
         .about-us .about-us-description {
@@ -1250,14 +1253,14 @@ Version: 1.00
                 .about-us .about-us-description {
                     width: 100%;
                     position: relative;
-                    z-index: 1;
+                    z-index: 2;
                 }
 
                 .about-us h4 {
                     font-size: 25px;
                     line-height: 34px;
                     position: relative;
-                    z-index: 1;
+                    z-index: 2;
                 }
 
                 .about-us h4 span {
@@ -1271,8 +1274,10 @@ Version: 1.00
                 }
 
                 #magni-glass {
+                    opacity: 0.5;
                     top: 0;
                     transform: translateY(10px);
+                    z-index: 0;
                 }
 
             /* Our Clients */
