@@ -1110,8 +1110,10 @@
 
                         console.log("mobileFunction");
 
-                        ScrollTrigger.config({
-                          autoRefreshEvents: ""
+                        ScrollTrigger.config({ 
+                            ignoreMobileResize: true, 
+                            fastScrollEnd: true,
+                            autoRefreshEvents: "" 
                         });
 
 
