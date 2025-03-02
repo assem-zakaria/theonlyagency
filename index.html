@@ -1447,35 +1447,32 @@
                             // });
 
                         //  Contact Section
-                            gsap.to("#contact-section-wave-svg textPath", {
-                              scrollTrigger: {
-                                trigger: "#contact-section",
-                                start: "top top",
-                                end: "+=1500",
-                                pin: true,
-                                pinSpacing: true,
-                                pinType: "fixed",
-                                scrub: 1,
-                                anticipatePin: 1,
-                                // markers: true
-                              },
-                              attr: { startOffset: "-100%" },
-                              ease: "none",
+                            // gsap.to("#contact-section-wave-svg textPath", {
+                            //   scrollTrigger: {
+                            //     trigger: "#contact-section",
+                            //     start: "top top",
+                            //     end: "+=1500",
+                            //     pin: true,
+                            //     pinSpacing: true,
+                            //     pinType: "fixed",
+                            //     scrub: 1,
+                            //     anticipatePin: 1,
+                            //   },
+                            //   attr: { startOffset: "-100%" },
+                            //   ease: "none",
+                            // });
+
+                            const mobile_contactUs_tl = gsap.timeline({ 
+                                repeat: -1 // Infinite repeat
                             });
 
-                            // gsap.to("#contact-section-wave-svg textPath", {
-                            //     scrollTrigger: {
-                            //         trigger: "#contact-section",
-                            //         start: "top bottom",
-                            //         end: "bottom top",
-                            //         scrub: 1,
-                            //     },
-                            //     attr: { 
-                            //         startOffset: "-100%" 
-                            //     },
-                            //     ease: "none",
-                            // });
-                        
+                            mobile_contactUs_tl.to("#contact-section-wave-svg textPath", {
+                                attr: { startOffset: "-500%" },
+                                duration: 28, 
+                                ease: "none",
+                            });
+
+ 
                     }
 
 
@@ -1569,12 +1566,6 @@
 
 
                     }
-
-
-                //  Touch Fix at end of code after all scrolltriggers are called
-                    // window.addEventListener("touchstart", () => {
-                    //   ScrollTrigger.refresh();
-                    // });
 
 
             })();
