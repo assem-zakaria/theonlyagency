@@ -1110,6 +1110,11 @@
 
                         console.log("mobileFunction");
 
+                        ScrollTrigger.config({
+                          autoRefreshEvents: "resize"
+                        });
+
+
                         //  Intro Video Mask Sets
                             gsap.set("#Text_Group", {
                                 transformOrigin: "center",
