@@ -1308,50 +1308,50 @@
 
 
                         //  Products Grid
-                            const products_grid_splitText = new SplitText(document.querySelector(".section-heading h3"), { 
-                                type: "chars,words",
-                                charsClass: "letter-div",
-                                wordsClass: "word-div" 
-                            });
+                            // const products_grid_splitText = new SplitText(document.querySelector(".section-heading h3"), { 
+                            //     type: "chars,words",
+                            //     charsClass: "letter-div",
+                            //     wordsClass: "word-div" 
+                            // });
 
-                            gsap.set(products_grid_splitText.chars, {
-                              autoAlpha: 0,
-                              scaleY: 0,
-                              yPercent: 50,
-                              color: "#00ddfd",
-                            });
+                            // gsap.set(products_grid_splitText.chars, {
+                            //   autoAlpha: 0,
+                            //   scaleY: 0,
+                            //   yPercent: 50,
+                            //   color: "#00ddfd",
+                            // });
 
-                            gsap.to(".section-heading h3 .letter-div", {
-                                scrollTrigger: {
-                                    trigger: ".section-heading h3",
-                                    start: "top 80%",
-                                },
-                                autoAlpha: 1,
-                                scaleY: 1,
-                                yPercent: 0,
-                                color: "#000000",
-                                duration: 0.3,
-                                ease: "power3.out",
-                                stagger: 0.05,
-                            });
+                            // gsap.to(".section-heading h3 .letter-div", {
+                            //     scrollTrigger: {
+                            //         trigger: ".section-heading h3",
+                            //         start: "top 80%",
+                            //     },
+                            //     autoAlpha: 1,
+                            //     scaleY: 1,
+                            //     yPercent: 0,
+                            //     color: "#000000",
+                            //     duration: 0.3,
+                            //     ease: "power3.out",
+                            //     stagger: 0.05,
+                            // });
 
-                            gsap.set(".projects-grid-wrapper .project-item", {
-                                autoAlpha: 0,
-                                y: 100
-                            });
+                            // gsap.set(".projects-grid-wrapper .project-item", {
+                            //     autoAlpha: 0,
+                            //     y: 100
+                            // });
 
-                            gsap.utils.toArray('.projects-grid-wrapper .project-item').forEach(el => {
-                              gsap.to(el, { 
-                                autoAlpha: 1,
-                                y: 0,
-                                duration: 1,
-                                ease: "power3.out",
-                                scrollTrigger: {
-                                  trigger: el,
-                                  start: "top 80%",
-                                }
-                              });
-                            });
+                            // gsap.utils.toArray('.projects-grid-wrapper .project-item').forEach(el => {
+                            //   gsap.to(el, { 
+                            //     autoAlpha: 1,
+                            //     y: 0,
+                            //     duration: 1,
+                            //     ease: "power3.out",
+                            //     scrollTrigger: {
+                            //       trigger: el,
+                            //       start: "top 80%",
+                            //     }
+                            //   });
+                            // });
 
                         //  About Us Magnifying Glass
                             gsap.set("#magni-glass",{
