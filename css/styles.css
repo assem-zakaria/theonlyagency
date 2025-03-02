@@ -947,7 +947,7 @@ Version: 1.00
 
     /* Contact Section */
         #contact-section {
-            height: 100dvh;
+            height: 100vh;
             width: 100%;
             overflow: hidden;
             background-color: black;
