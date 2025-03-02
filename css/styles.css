@@ -1325,6 +1325,11 @@ Version: 1.00
                 }
 
             /* Contact Section */
+
+                #contact-section {
+                    height: auto;
+                }
+
                 #contact-section #contact-section-wave-svg {
                     height: 220px;
                 }
