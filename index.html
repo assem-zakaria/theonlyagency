@@ -1191,120 +1191,115 @@
                             }, "<");
 
                         //  Hero Section Split Text
-                            const hero_splitText = new SplitText([hero_sec_h1, hero_sec_h3, hero_sec_h4, hero_sec_h5], { 
-                                type: "chars,words",
-                                charsClass: "letter-div",
-                                wordsClass: "word-div" 
-                            });
+                            // const hero_splitText = new SplitText([hero_sec_h1, hero_sec_h3, hero_sec_h4, hero_sec_h5], { 
+                            //     type: "chars,words",
+                            //     charsClass: "letter-div",
+                            //     wordsClass: "word-div" 
+                            // });
 
-                            gsap.set(hero_splitText.chars, {
-                              autoAlpha: 0,
-                              scaleY: 0,
-                              yPercent: 50,
-                              color: "#00ddfd",
-                            });
+                            // gsap.set(hero_splitText.chars, {
+                            //   autoAlpha: 0,
+                            //   scaleY: 0,
+                            //   yPercent: 50,
+                            //   color: "#00ddfd",
+                            // });
 
-                            gsap.set("#hero-section #line-separator", {
-                                width: 0
-                            });
+                            // gsap.set("#hero-section #line-separator", {
+                            //     width: 0
+                            // });
 
-                            gsap.set(["#hero-section p:nth-of-type(1)", "#hero-section p:nth-of-type(2)", "#hero-section #graph-indicators .indc-item", "#hero-section #graph-cont"], {
-                                autoAlpha: 0,
-                                y: 100
-                            });
+                            // gsap.set(["#hero-section p:nth-of-type(1)", "#hero-section p:nth-of-type(2)", "#hero-section #graph-indicators .indc-item", "#hero-section #graph-cont"], {
+                            //     autoAlpha: 0,
+                            //     y: 100
+                            // });
 
-                            gsap.set("#hero-section #planet-el", {
-                                autoAlpha: 0,
-                                x: 100
-                            });
+                            // gsap.set("#hero-section #planet-el", {
+                            //     autoAlpha: 0,
+                            //     x: 100
+                            // });
 
                         //  Hero Section Timeline
-                            const hero_section_main_tl = gsap.timeline({
-                              scrollTrigger: {
-                                trigger: "#hero-section",
-                                // pin: true,
-                                // pinSpacing: true,
-                                // pinType: "fixed",
-                                start: "top top",
-                                end: () => `+=${window.innerHeight/2}px`,
-                                scrub: 3,
-                                ease: "power3.out",
-                                // markers: true,
-                              }
-                            });
+                            // const hero_section_main_tl = gsap.timeline({
+                            //   scrollTrigger: {
+                            //     trigger: "#hero-section",
+                            //     start: "top top",
+                            //     end: () => `+=${window.innerHeight/2}px`,
+                            //     scrub: 3,
+                            //     ease: "power3.out",
+                            //   }
+                            // });
 
-                            const hero_section_tl = gsap.timeline({
-                              scrollTrigger: {
-                                trigger: "#hero-section-wrapper",
-                                start: "top 80%",
-                                end: () => `+=${window.innerHeight/2}px`,
-                                scrub: 3,
-                                ease: "power3.out",
-                                // markers: true,
-                              }
-                            });
+                            // const hero_section_tl = gsap.timeline({
+                            //   scrollTrigger: {
+                            //     trigger: "#hero-section-wrapper",
+                            //     start: "top 80%",
+                            //     end: () => `+=${window.innerHeight/2}px`,
+                            //     scrub: 3,
+                            //     ease: "power3.out",
+                            //   }
+                            // });
 
-                            hero_section_tl.to("#hero-section h1 .letter-div", {
-                                autoAlpha: 1,
-                                scaleY: 1,
-                                yPercent: 0,
-                                color: "#000000",
-                                ease: 'power3.out',
-                                stagger: 0.1,
-                            });
+                            // hero_section_tl.to("#hero-section h1 .letter-div", {
+                            //     autoAlpha: 1,
+                            //     scaleY: 1,
+                            //     yPercent: 0,
+                            //     color: "#000000",
+                            //     ease: 'power3.out',
+                            //     stagger: 0.1,
+                            // });
 
-                            hero_section_tl.to("#hero-section h3 .letter-div", {
-                                autoAlpha: 1,
-                                scaleY: 1,
-                                yPercent: 0,
-                                color: "#000000",
-                                ease: "power3.out",
-                                stagger: 0.1,
-                            });
+                            // hero_section_tl.to("#hero-section h3 .letter-div", {
+                            //     autoAlpha: 1,
+                            //     scaleY: 1,
+                            //     yPercent: 0,
+                            //     color: "#000000",
+                            //     ease: "power3.out",
+                            //     stagger: 0.1,
+                            // });
 
-                            hero_section_tl.to("#hero-section #planet-el", {
-                                autoAlpha: 0.2,
-                                x: 0,
-                                duration: 1,
-                                ease: "power3.out",
-                            });
+                            // hero_section_tl.to("#hero-section #planet-el", {
+                            //     autoAlpha: 0.2,
+                            //     x: 0,
+                            //     duration: 1,
+                            //     ease: "power3.out",
+                            // });
 
-                            hero_section_tl.to("#hero-section #line-separator", {
-                                width: 50,
-                                ease: "power3.out",
-                            });
+                            // hero_section_tl.to("#hero-section #line-separator", {
+                            //     width: 50,
+                            //     ease: "power3.out",
+                            // });
 
-                            hero_section_tl.to("#hero-section h4 .letter-div", {
-                                autoAlpha: 1,
-                                scaleY: 1,
-                                yPercent: 0,
-                                color: "#000000",
-                                ease: "power3.out",
-                                stagger: 0.1,
-                            });
+                            // hero_section_tl.to("#hero-section h4 .letter-div", {
+                            //     autoAlpha: 1,
+                            //     scaleY: 1,
+                            //     yPercent: 0,
+                            //     color: "#000000",
+                            //     ease: "power3.out",
+                            //     stagger: 0.1,
+                            // });
 
-                            hero_section_tl.to("#hero-section h5 .letter-div", {
-                                autoAlpha: 1,
-                                scaleY: 1,
-                                yPercent: 0,
-                                color: "#000000",
-                                ease: "power3.out",
-                                stagger: 0.1,
-                            });
+                            // hero_section_tl.to("#hero-section h5 .letter-div", {
+                            //     autoAlpha: 1,
+                            //     scaleY: 1,
+                            //     yPercent: 0,
+                            //     color: "#000000",
+                            //     ease: "power3.out",
+                            //     stagger: 0.1,
+                            // });
 
-                            hero_section_tl.to("#hero-section p:nth-of-type(1)", {
-                                autoAlpha: 1,
-                                y: 0,
-                                duration: 1,
-                                ease: "power3.out",
-                            });
+                            // hero_section_tl.to("#hero-section p:nth-of-type(1)", {
+                            //     autoAlpha: 1,
+                            //     y: 0,
+                            //     duration: 1,
+                            //     ease: "power3.out",
+                            // });
 
-                            hero_section_tl.to("#hero-section p:nth-of-type(2)", {
-                                autoAlpha: 1,
-                                y: 0,
-                                duration: 1,
-                                ease: "power3.out",
-                            });
+                            // hero_section_tl.to("#hero-section p:nth-of-type(2)", {
+                            //     autoAlpha: 1,
+                            //     y: 0,
+                            //     duration: 1,
+                            //     ease: "power3.out",
+                            // });
 
                         //  Products Grid
                             // const products_grid_splitText = new SplitText(document.querySelector(".section-heading h3"), { 
@@ -1353,21 +1348,21 @@
                             // });
 
                         //  About Us Magnifying Glass
-                            gsap.set("#magni-glass",{
-                                    x: 100,
-                                    autoAlpha: 0
-                            });
+                            // gsap.set("#magni-glass",{
+                            //         x: 100,
+                            //         autoAlpha: 0
+                            // });
 
-                            gsap.to("#magni-glass", { 
-                                autoAlpha: 0.4,
-                                x: 0,
-                                duration: 1,
-                                ease: "power3.out",
-                                scrollTrigger: {
-                                  trigger: "#magni-glass",
-                                  start: "top 80%",
-                                }
-                              });
+                            // gsap.to("#magni-glass", { 
+                            //     autoAlpha: 0.4,
+                            //     x: 0,
+                            //     duration: 1,
+                            //     ease: "power3.out",
+                            //     scrollTrigger: {
+                            //         trigger: "#magni-glass",
+                            //         start: "top 80%",
+                            //     }
+                            // });
 
                         //  Our Clients
                             // gsap.set(".our-clients hr", {
