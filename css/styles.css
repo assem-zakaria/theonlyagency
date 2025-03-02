@@ -694,6 +694,7 @@ Version: 1.00
 
         .creative-projects-slider .swiper-button-prev, 
         .creative-projects-slider .swiper-button-next {
+            background-color: white;
             left: auto;
             right: auto;
             top: auto;
@@ -703,20 +704,22 @@ Version: 1.00
         }
 
         .creative-projects-slider .swiper-button-prev {
-            left: 10px;
+            left: 0px;
             top: 50%;
             transform: translateY(calc(-50% - 40px));
+            padding: 8px 8px 8px 15px;
         }
 
         .creative-projects-slider .swiper-button-next {
-            right: 10px;
+            right: 0px;
             top: 50%;
             transform: translateY(calc(-50% - 40px));
+            padding: 8px 15px 8px 8px;
         }
 
         .creative-projects-slider .swiper-button-prev:after, 
         .creative-projects-slider .swiper-button-next:after {
-            color: #0000008f;
+            color: #000000;
         }
 
         .creative-projects-slider .swiper-slide {
@@ -1305,6 +1308,8 @@ Version: 1.00
                 .creative-projects-slider .swiper-button-prev, 
                 .creative-projects-slider .swiper-button-next {
                     display: flex;
+                    width: fit-content;
+                    box-sizing: content-box;
                 }
 
                 .creative-projects-slider .swiper-slide .slide-info {
