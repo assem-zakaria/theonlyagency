@@ -1275,7 +1275,7 @@ Version: 1.00
 
                 #magni-glass {
                     opacity: 0.5;
-                    top: 0;
+                    top: 40px;
                     transform: translateY(10px);
                     z-index: 0;
                 }
