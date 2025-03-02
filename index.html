@@ -1180,42 +1180,6 @@
                             }, "<");
 
 
-
-                        //  Intro Video ScrollTrigger Scrub Section Timeline
-                            // const intro_video_tl = gsap.timeline({
-                            //   scrollTrigger: {
-                            //     trigger: "#video_inner_cont",
-                            //     pin: true,
-                            //     pinSpacing: true,
-                            //     pinType: "fixed",
-                            //     start: "top top",
-                            //     end: "+=100%",
-                            //     scrub: 1,
-                            //     ease: "power3.out",
-                            //     // markers: true,
-                            //     // onLeave: () => gsap.set("#video_inner_cont", { clearProps: "transform" }),
-                            //     onLeave: function () {
-                            //         gsap.set("#video_inner_cont", { clearProps: "transform" })
-                            //     }
-                            //     //  must use this onleave to clear the transform caused by pinning in order to keep the element in
-                            //   }
-                            // });
-
-                            // intro_video_tl.to("#Video_Blue_Logo", {
-                            //     transformOrigin: "left center",
-                            //     x: 2000,
-                            //     scale: 60,
-                            //     duration: 1,
-                            // });
-
-                            // intro_video_tl.to("#Text_Group", {
-                            //     transformOrigin: "center",
-                            //     xPercent: 30,
-                            //     yPercent: 1700,
-                            //     scale: 60,
-                            //     duration: 1
-                            // }, "<");
-
                         //  Hero Section Split Text
                             // const hero_splitText = new SplitText([hero_sec_h1, hero_sec_h3, hero_sec_h4, hero_sec_h5], { 
                             //     type: "chars,words",
@@ -1355,23 +1319,23 @@
                             //     stagger: 0.05,
                             // });
 
-                            // gsap.set(".projects-grid-wrapper .project-item", {
-                            //     autoAlpha: 0,
-                            //     y: 100
-                            // });
+                            gsap.set(".projects-grid-wrapper .project-item", {
+                                autoAlpha: 0,
+                                y: 100
+                            });
 
-                            // gsap.utils.toArray('.projects-grid-wrapper .project-item').forEach(el => {
-                            //   gsap.to(el, { 
-                            //     autoAlpha: 1,
-                            //     y: 0,
-                            //     duration: 1,
-                            //     ease: "power3.out",
-                            //     scrollTrigger: {
-                            //       trigger: el,
-                            //       start: "top 80%",
-                            //     }
-                            //   });
-                            // });
+                            gsap.utils.toArray('.projects-grid-wrapper .project-item').forEach(el => {
+                              gsap.to(el, { 
+                                autoAlpha: 1,
+                                y: 0,
+                                duration: 1,
+                                ease: "power3.out",
+                                scrollTrigger: {
+                                  trigger: el,
+                                  start: "top 80%",
+                                }
+                              });
+                            });
 
                         //  About Us Magnifying Glass
                             // gsap.set("#magni-glass",{
