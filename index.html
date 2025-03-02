@@ -1161,6 +1161,26 @@
                                 ease: "expo.out",
                             }, "<=50%");
 
+                            intro_video_loader_tl.to("#Video_Blue_Logo", {
+                                delay: 1,
+                                transformOrigin: "left center",
+                                x: 2000,
+                                scale: 60,
+                                duration: 3,
+                                ease: "power3.inOut",
+                            });
+
+                            intro_video_loader_tl.to("#Text_Group", {
+                                transformOrigin: "center",
+                                xPercent: 30,
+                                yPercent: 1700,
+                                scale: 60,
+                                duration: 3,
+                                ease: "power3.inOut",
+                            }, "<");
+
+
+
                         //  Intro Video ScrollTrigger Scrub Section Timeline
                             // const intro_video_tl = gsap.timeline({
                             //   scrollTrigger: {
