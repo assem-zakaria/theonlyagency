@@ -1400,11 +1400,6 @@
                             //   })
                             // });
                             
-                            // gsap.set([our_clients_p_els, ".our-clients .logos-cont img"], {
-                            //     autoAlpha: 0,
-                            //     y: 100
-                            // });
-
                             // document.querySelectorAll(".our-clients .p-cont").forEach(el => {
                             //     gsap.to(el.querySelector("p"), { 
                             //         scrollTrigger: {
@@ -1418,18 +1413,23 @@
                             //     });
                             // });
 
-                            // gsap.utils.toArray('.our-clients .logos-cont img').forEach(el => {
-                            //   gsap.to(el, { 
-                            //     autoAlpha: 1,
-                            //     y: 0,
-                            //     duration: 1,
-                            //     ease: "power3.out",
-                            //     scrollTrigger: {
-                            //       trigger: el,
-                            //       start: "top 80%",
-                            //     }
-                            //   });
-                            // });
+                            gsap.set([our_clients_p_els, ".our-clients .logos-cont img"], {
+                                autoAlpha: 0,
+                                y: 100
+                            });
+
+                            gsap.utils.toArray('.our-clients .logos-cont img').forEach(el => {
+                              gsap.to(el, { 
+                                autoAlpha: 1,
+                                y: 0,
+                                duration: 1,
+                                ease: "power3.out",
+                                scrollTrigger: {
+                                  trigger: el,
+                                  start: "top 80%",
+                                }
+                              });
+                            });
 
                         //  Contact Section
                             gsap.to("#contact-section-wave-svg textPath", {
