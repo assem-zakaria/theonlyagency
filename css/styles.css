@@ -252,7 +252,6 @@ Version: 1.00
 
 
         #theonlyagency_intro_SVG.hide_intro {
-/*             clip-path: inset(0 0 100% 0); */
             opacity: 0;
         }
 
@@ -288,7 +287,7 @@ Version: 1.00
         #intro_video {
             height: auto;
             width: 100%;
-            overflow: hidden;
+/*             overflow: hidden; */
             box-sizing: border-box;
             background-color: black;
             position: sticky;
