@@ -281,12 +281,8 @@ Version: 1.00
         #svg_video_el {
             width: 100vw;
             height: 100vh;
+            display: none;
         }
-
-        /* #svg_video_el foreignObject {
-            height: 120vh;
-            width: 100%;
-        } */
 
 
         #intro_video {
@@ -305,21 +301,21 @@ Version: 1.00
             top: 0;
             width: 100%;
             height: 100vh;
-/*             -webkit-mask-image: url('../images/VideoMaskSVGCorrect.svg'); */
-/*             mask-image: url('../images/VideoMaskSVGCorrect.svg'); */
-/*             mask-repeat: no-repeat; */
-/*             mask-position: 51.7% 48%; */
+            -webkit-mask-image: url('../images/VideoMaskSVGCorrect.svg');
+            mask-image: url('../images/VideoMaskSVGCorrect.svg');
+            mask-repeat: no-repeat;
+            mask-position: 51.7% 48%;
         }
 
         #intro_video video {
-/*             box-sizing: border-box; */
-/*             width: 100%;     */
-/*             height: 100%; */
-/*             object-fit: cover; */
-/*             position: relative; */
-/*             left: 0px; */
-/*             top: 50%; */
-/*             transform: translate(0px, -50%); */
+            box-sizing: border-box;
+            width: 100%;    
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            left: 0px;
+            top: 50%;
+            transform: translate(0px, -50%);
         }
 
     /* Hero Section */
@@ -1148,7 +1144,7 @@ Version: 1.00
         @media only screen and (max-width : 767px) {
 
             /* Intro Video */
-                #intro_video {
+                /* #intro_video {
                     height: 100vh;
                     width: 100%;
                     overflow: hidden;
@@ -1157,7 +1153,7 @@ Version: 1.00
                     position: relative;
                     top: 0;
                     left: 0;
-                }
+                } */
 
 
             /* Hero Section */
