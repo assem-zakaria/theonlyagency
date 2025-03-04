@@ -544,8 +544,16 @@
                               }
                             });
 
+                            // intro_video_tl.to("#intro_video #video_masked_cont", {
+                            //     maskSize: "5600%",
+                            //     duration: 1
+                            // });
+
                             intro_video_tl.to("#intro_video #video_masked_cont", {
-                                maskSize: "5600%",
+                                css: {
+                                    maskSize: "5600%",
+                                    WebkitMaskSize: "5600%"
+                                },
                                 duration: 1
                             });
 
