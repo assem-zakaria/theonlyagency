@@ -785,8 +785,8 @@
                                 const ctx = canvas.getContext("2d"); // Set Canvas to 2d
 
                                 // Set canvas size
-                                    canvas.width = window.innerWidth;
-                                    canvas.height = window.innerHeight * 0.72;
+                                    // canvas.width = window.innerWidth;
+                                    // canvas.height = 610;
 
                                 //  Zoom Factors
                                     const zoomFactor = 2; // Magnification level
@@ -825,6 +825,18 @@
                                     'Our team is constantly asking, "What if we did it this way?" or "How can we make this better?" This mindset of perpetual curiosity and improvement defines everything we do. It\'s about pushing boundaries, challenging norms, and exploring new possibilities to deliver superior results for our clients.'
                                     ];
 
+
+                                //  Canvas Dimensions should be set before drawing, unless text will be stretched
+                                    let height_before_paragraphs = 100 + fontSize1 + fontSize2 + horizontalLineHeight + lineSpacing + 50;
+
+                                    paragraphs.forEach((para, index) => {
+                                        height_before_paragraphs += paragraphSpacing;
+                                        if (index === paragraphs.length - 1) {
+                                            canvas.width = window.innerWidth;
+                                            canvas.height = height_before_paragraphs;
+                                        }
+                                    });
+
                                 // Create a high-resolution offscreen canvas
                                     const scaleFactor = 2; // Increase resolution
                                     const offscreenCanvas = document.createElement("canvas");
@@ -834,40 +846,40 @@
                                     offCtx.scale(scaleFactor, scaleFactor);
 
 
-                                
-
                                 function drawText(ctx, x, y) {
 
                                     // Draw First Text
                                     ctx.fillStyle = textBlueColor;
                                     ctx.font = `${fontSize1}px ${fontFamily1}`;
                                     ctx.fillText(text, x, y);
-                                    // ctx.textBaseline = "top";
 
 
                                     // Draw Second Text
                                     ctx.fillStyle = textColor2;
                                     ctx.font = `${fontSize2}px ${fontFamily2}`;
                                     ctx.fillText(text2, x, y + fontSize1); // 10px spacing
-                                    // ctx.textBaseline = "top";
-
 
                                     // Draw the horizontal line 50px below second text
                                     ctx.fillStyle = horizontalLineColor;
                                     ctx.fillRect(x, y + fontSize1 + fontSize2, horizontalLineWidth, horizontalLineHeight);
-                                    // ctx.textBaseline = "top";
 
 
                                     // Draw paragraphs under the line
                                     let paragraphY = y + fontSize1 + fontSize2 + horizontalLineHeight + lineSpacing + 20;
                                     ctx.fillStyle = paragraphColor;
                                     ctx.font = `${fontSize3}px ${fontFamily3}`;
-                                    // ctx.textBaseline = "top";
 
 
                                     paragraphs.forEach((para, index) => {
                                         drawMultilineText(ctx, para, x, paragraphY, paragraphsMaxWidth);
                                         paragraphY += paragraphSpacing;
+
+                                        if (index === paragraphs.length - 1) {
+                                            console.log(paragraphY);
+                                            canvas.width = window.innerWidth;
+                                            canvas.height = paragraphY;
+
+                                        }
                                     });
                                 }
 
@@ -970,14 +982,11 @@
                                 canvas.addEventListener("mousemove", magnify);
 
                                 //  Mouseleave Event
-                                canvas.addEventListener("mouseleave", function () {
-                                    
-                                    console.log("mouseleave")
-
+                                canvas.addEventListener("mouseleave", function () {                                    
 
                                     gsap.to({ x: lensX, y: lensY }, {
-                                        x: window.innerWidth,
-                                        y: window.innerHeight / 2,
+                                        x: window.innerWidth - 200,
+                                        y: window.innerHeight / 2 - 200,
                                         duration: 1,
                                         ease: "power2.out",
                                         onUpdate: function () {
@@ -1126,17 +1135,39 @@
                         });
 
                         //  Intro Video Timeline
-                            gsap.set("#intro_video #video_masked_cont", { maskSize: "100%" });
-
                             const intro_video_loader_tl = gsap.timeline({ 
                                 delay: 1,
                             });
 
                             intro_video_loader_tl.call(() => {
                                 document.querySelector("#black_intro_div").classList.add('hide_black_intro');
-                            });
+                            })
+
 
                         //  Intro Video ScrollTrigger Scrub Section Timeline
+                            gsap.set("#intro_video #video_masked_cont", { 
+                                maskSize: "100%" 
+                            });
+
+                            gsap.set("#intro_video #video_intro_text", {
+                                yPercent: 100 
+                            });
+
+                            gsap.set(document.querySelectorAll("#intro_video #video_intro_text span")[0], {
+                                xPercent: -50
+                            });
+
+                            gsap.set(document.querySelectorAll("#intro_video #video_intro_text span")[2], {
+                                xPercent: -50
+                            });
+
+                            gsap.set(document.querySelectorAll("#intro_video #video_intro_text span")[1], {
+                                xPercent: 50
+                            });
+
+                            document.querySelector("#intro_video #video_masked_cont").style.webkitMaskPosition = "51.7% 48%";
+                            document.querySelector("#intro_video #video_masked_cont").style.maskPosition = "51.7% 48%";
+
                             const intro_video_tl = gsap.timeline({
                               scrollTrigger: {
                                 trigger: "#video_masked_cont",
@@ -1144,7 +1175,7 @@
                                 pinSpacing: true,
                                 pinType: "fixed",
                                 start: "top top",
-                                end: "+=300%",
+                                end: "+=500%",
                                 scrub: 1,
                                 ease: "none",
                                 // markers: true,
@@ -1156,6 +1187,39 @@
                             intro_video_tl.to("#intro_video #video_masked_cont", {
                                 maskSize: "5600%",
                                 duration: 1
+                            });
+
+                            intro_video_tl.to("#intro_video #video_intro_text", {
+                                yPercent: 0,
+                                duration: 1
+                            }, "<");
+
+                            intro_video_tl.to([document.querySelectorAll("#intro_video #video_intro_text span")[0], document.querySelectorAll("#intro_video #video_intro_text span")[2]], {
+                                xPercent: 0,
+                                duration: 1
+                            }, "<");
+
+                            intro_video_tl.to(document.querySelectorAll("#intro_video #video_intro_text span")[1], {
+                                xPercent: -10,
+                                duration: 1
+                            }, "<");
+
+                            //  Animate the container of the text as if its being pushed top by scroll
+                            const move_text_with_hero_tl = gsap.timeline({
+                              scrollTrigger: {
+                                trigger: "#hero-section",
+                                start: "top bottom",
+                                // end: () => `+=${window.innerHeight}px`,
+                                scrub: true,
+                                ease: "none",
+                                // markers: true,
+                              }
+                            });
+
+                            move_text_with_hero_tl.to("#video_text_inner_wrapper", {
+                                y: () => {
+                                    return -document.querySelector("#hero-section").offsetHeight; // Moves up by the same height as the trigger
+                                }
                             });
 
 
