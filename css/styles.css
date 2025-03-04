@@ -312,6 +312,9 @@ Version: 1.00
 
             -webkit-background-clip: border-box;
             background-clip: border-box;
+
+            -webkit-mask-origin: border-box;
+            mask-origin: border-box;
         }
 
         #intro_video #video_wrapper {
