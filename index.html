@@ -458,13 +458,12 @@
 
                         //  Intro Video Timeline
                             const intro_video_loader_tl = gsap.timeline({ 
-                                delay: 1,
+                                delay: 0,
                             });
 
                             intro_video_loader_tl.call(() => {
                                 black_intro_div.classList.add('hide_black_intro');
                             })
-
 
                         //  Intro Video ScrollTrigger Scrub Section Timeline
                             gsap.set(intro_vid_masked_el, { 
@@ -557,8 +556,6 @@
                                     return -document.querySelector("#hero-section").offsetHeight; // Moves up by the same height as the trigger
                                 }
                             });
-
-
 
                         //  Hero Section Split Text
                             const hero_splitText = new SplitText([hero_sec_h1, hero_sec_h3, hero_sec_h4, hero_sec_h5], { 
@@ -751,222 +748,230 @@
                         //  About Us Canvas
                             function aboutsUsCanvasFunc() {
 
-                                const canvas = document.getElementById("myCanvas");
-                                const ctx = canvas.getContext("2d"); // Set Canvas to 2d
+                                var font1 = new FontFace('PlaylistScript', 'url(../fonts/Playlist-Script.woff)');
+                                var font2 = new FontFace('AnotherFont', 'url(../fonts/Gotham-Light.woff)');
 
-                                // Set canvas size
-                                    // canvas.width = window.innerWidth;
-                                    // canvas.height = 610;
+                                Promise.all([font1.load(), font2.load()]).then(function(loadedFonts) {
+                                    loadedFonts.forEach(font => document.fonts.add(font));
+                                    
+                                    console.log('Fonts loaded');
 
-                                //  Zoom Factors
-                                    const zoomFactor = 2; // Magnification level
-                                    const lensRadius = 85; // Magnifying glass size
+                                    const canvas = document.getElementById("myCanvas");
+                                    const ctx = canvas.getContext("2d"); // Set Canvas to 2d
 
-                                //  First Text
-                                    const text = "To Take Brands";
-                                    const fontSize1 = 60;
-                                    const fontFamily1 = "Playlist-Script";
-                                    const textBlueColor = "rgb(0, 223, 255)";
-                                    const textColor = "#000";
+                                    //  Zoom Factors
+                                        const zoomFactor = 2; // Magnification level
+                                        const lensRadius = 85; // Magnifying glass size
 
-                                //  Second Text
-                                    const text2 = "TO PLACES THEY'VE NEVER BEEN";
-                                    const fontSize2 = 38;
-                                    const fontFamily2 = "Gotham Light";
-                                    const textColor2 = "white";
+                                    //  First Text
+                                        const text1 = "To Take Brands";
+                                        const fontSize1 = 65;
+                                        const fontFamily1 = "PlaylistScript";
+                                        const textColor1 = "rgb(0, 223, 255)";
 
-                                //  Horizontal Line
-                                    const horizontalLineWidth = 100;
-                                    const horizontalLineHeight = 2;
-                                    const horizontalLineColor = "rgb(0, 223, 255)";
+                                    //  Second Text
+                                        const text2 = "TO PLACES THEY'VE NEVER BEEN";
+                                        const fontSize2 = 38;
+                                        const fontFamily2 = "Gotham Light";
+                                        const textColor2 = "white";
 
-                                //  Paragraph properties
-                                    const fontSize3 = 25;
-                                    const fontFamily3 = "Gotham Light";
-                                    const paragraphColor = "white";
-                                    const lineSpacing = 30; // Space between line and first paragraph
-                                    const paragraphSpacing = 120; // Space between paragraphs
-                                    const paragraphsMaxWidth = 1200;
+                                    //  Horizontal Line
+                                        const horizontalLineWidth = 100;
+                                        const horizontalLineHeight = 2;
+                                        const horizontalLineColor = "rgb(0, 223, 255)";
 
-                                //  Paragraph Text Array
-                                    const paragraphs = [
-                                    "At THE ONLY AGENCY (PERPETUAL), our purpose is driven by an unrelenting quest for improvement and innovation. We are fueled by the desire to continuously seek out better ways to do things, to innovate, and to enhance the world around us.",
-                                    "For us, good is never enough; we thrive on the challenge of finding more effective, efficient, and impactful solutions. We believe that marketing is not just about reaching audiences but transforming the way brands connect with people.",
-                                    'Our team is constantly asking, "What if we did it this way?" or "How can we make this better?" This mindset of perpetual curiosity and improvement defines everything we do. It\'s about pushing boundaries, challenging norms, and exploring new possibilities to deliver superior results for our clients.'
-                                    ];
+                                    //  Paragraph properties
+                                        const fontSize3 = 25;
+                                        const fontFamily3 = "Gotham Light";
+                                        const paragraphColor = "white";
+                                        const lineSpacing = 30; // Space between line and first paragraph
+                                        const paragraphSpacing = 120; // Space between paragraphs
+                                        const paragraphsMaxWidth = 1200;
 
-
-                                //  Canvas Dimensions should be set before drawing, unless text will be stretched
-                                    let height_before_paragraphs = 100 + fontSize1 + fontSize2 + horizontalLineHeight + lineSpacing + 50;
-
-                                    paragraphs.forEach((para, index) => {
-                                        height_before_paragraphs += paragraphSpacing;
-                                        if (index === paragraphs.length - 1) {
-                                            canvas.width = window.innerWidth;
-                                            canvas.height = height_before_paragraphs;
-                                        }
-                                    });
-
-                                // Create a high-resolution offscreen canvas
-                                    const scaleFactor = 2; // Increase resolution
-                                    const offscreenCanvas = document.createElement("canvas");
-                                    const offCtx = offscreenCanvas.getContext("2d");
-                                    offscreenCanvas.width = canvas.width * scaleFactor;
-                                    offscreenCanvas.height = canvas.height * scaleFactor;
-                                    offCtx.scale(scaleFactor, scaleFactor);
+                                    //  Paragraph Text Array
+                                        const paragraphs = [
+                                        "At THE ONLY AGENCY (PERPETUAL), our purpose is driven by an unrelenting quest for improvement and innovation. We are fueled by the desire to continuously seek out better ways to do things, to innovate, and to enhance the world around us.",
+                                        "For us, good is never enough; we thrive on the challenge of finding more effective, efficient, and impactful solutions. We believe that marketing is not just about reaching audiences but transforming the way brands connect with people.",
+                                        'Our team is constantly asking, "What if we did it this way?" or "How can we make this better?" This mindset of perpetual curiosity and improvement defines everything we do. It\'s about pushing boundaries, challenging norms, and exploring new possibilities to deliver superior results for our clients.'
+                                        ];
 
 
-                                function drawText(ctx, x, y) {
+                                    //  Canvas Dimensions should be set before drawing, unless text will be stretched
+                                        let height_before_paragraphs = 100 + fontSize1 + fontSize2 + horizontalLineHeight + lineSpacing + 50;
 
-                                    // Draw First Text
-                                    ctx.fillStyle = textBlueColor;
-                                    ctx.font = `${fontSize1}px ${fontFamily1}`;
-                                    ctx.fillText(text, x, y);
-
-
-                                    // Draw Second Text
-                                    ctx.fillStyle = textColor2;
-                                    ctx.font = `${fontSize2}px ${fontFamily2}`;
-                                    ctx.fillText(text2, x, y + fontSize1); // 10px spacing
-
-                                    // Draw the horizontal line 50px below second text
-                                    ctx.fillStyle = horizontalLineColor;
-                                    ctx.fillRect(x, y + fontSize1 + fontSize2, horizontalLineWidth, horizontalLineHeight);
-
-
-                                    // Draw paragraphs under the line
-                                    let paragraphY = y + fontSize1 + fontSize2 + horizontalLineHeight + lineSpacing + 20;
-                                    ctx.fillStyle = paragraphColor;
-                                    ctx.font = `${fontSize3}px ${fontFamily3}`;
-
-
-                                    paragraphs.forEach((para, index) => {
-                                        drawMultilineText(ctx, para, x, paragraphY, paragraphsMaxWidth);
-                                        paragraphY += paragraphSpacing;
-
-                                        if (index === paragraphs.length - 1) {
-                                            console.log(paragraphY);
-                                            canvas.width = window.innerWidth;
-                                            canvas.height = paragraphY;
-
-                                        }
-                                    });
-                                }
-
-                                //  Draw Multiline Text - The Three Paragraphs
-                                    function drawMultilineText(ctx, text, x, y, maxWidth) {
-                                        const words = text.split(" ");
-                                        let line = "";
-                                        let lineHeight = 30; // Line height for wrapped text
-                                        let currentY = y;
-
-                                        words.forEach((word) => {
-                                          const testLine = line + word + " ";
-                                          const testWidth = ctx.measureText(testLine).width;
-                                          if (testWidth > maxWidth) {
-                                            ctx.fillText(line, x, currentY);
-                                            line = word + " ";
-                                            currentY += lineHeight;
-                                          } else {
-                                            line = testLine;
-                                          }
+                                        paragraphs.forEach((para, index) => {
+                                            height_before_paragraphs += paragraphSpacing;
+                                            if (index === paragraphs.length - 1) {
+                                                canvas.width = window.innerWidth;
+                                                canvas.height = height_before_paragraphs;
+                                            }
                                         });
 
-                                        ctx.fillText(line, x, currentY);
+                                    // Create a high-resolution offscreen canvas
+                                        const scaleFactor = 2; // Increase resolution
+                                        const offscreenCanvas = document.createElement("canvas");
+                                        const offCtx = offscreenCanvas.getContext("2d");
+                                        offscreenCanvas.width = canvas.width * scaleFactor;
+                                        offscreenCanvas.height = canvas.height * scaleFactor;
+                                        offCtx.scale(scaleFactor, scaleFactor);
+
+
+                                    function drawText(ctx, x, y) {
+
+                                        // Draw First Text
+                                        ctx.fillStyle = textColor1;
+                                        ctx.font = "65px PlaylistScript";
+                                        ctx.fillText(text1, x, y);
+
+
+                                        // Draw Second Text
+                                        ctx.fillStyle = textColor2;
+                                        ctx.font = `${fontSize2}px ${fontFamily2}`;
+                                        ctx.fillText(text2, x, y + fontSize1); // 10px spacing
+
+                                        // Draw the horizontal line 50px below second text
+                                        ctx.fillStyle = horizontalLineColor;
+                                        ctx.fillRect(x, y + fontSize1 + fontSize2, horizontalLineWidth, horizontalLineHeight);
+
+
+                                        // Draw paragraphs under the line
+                                        let paragraphY = y + fontSize1 + fontSize2 + horizontalLineHeight + lineSpacing + 20;
+                                        ctx.fillStyle = paragraphColor;
+                                        ctx.font = `${fontSize3}px ${fontFamily3}`;
+
+
+                                        paragraphs.forEach((para, index) => {
+                                            drawMultilineText(ctx, para, x, paragraphY, paragraphsMaxWidth);
+                                            paragraphY += paragraphSpacing;
+
+                                            if (index === paragraphs.length - 1) {
+                                                canvas.width = window.innerWidth;
+                                                canvas.height = paragraphY;
+                                            }
+                                        });
+                                    }
+
+                                    //  Draw Multiline Text - The Three Paragraphs
+                                        function drawMultilineText(ctx, text, x, y, maxWidth) {
+                                            const words = text.split(" ");
+                                            let line = "";
+                                            let lineHeight = 30; // Line height for wrapped text
+                                            let currentY = y;
+
+                                            words.forEach((word) => {
+                                              const testLine = line + word + " ";
+                                              const testWidth = ctx.measureText(testLine).width;
+                                              if (testWidth > maxWidth) {
+                                                ctx.fillText(line, x, currentY);
+                                                line = word + " ";
+                                                currentY += lineHeight;
+                                              } else {
+                                                line = testLine;
+                                              }
+                                            });
+
+                                            ctx.fillText(line, x, currentY);
+                                        }
+
+
+                                    // Draw the high-resolution text on the offscreen canvas
+                                        drawText(offCtx, 100, 100);
+
+                                    function draw() {
+                                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                                        ctx.drawImage(offscreenCanvas, 0, 0, canvas.width, canvas.height);
                                     }
 
 
-                                // Draw the high-resolution text on the offscreen canvas
-                                    drawText(offCtx, 100, 100);
+                                    let lensX = 0, lensY = 0;
 
-                                function draw() {
-                                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                                    ctx.drawImage(offscreenCanvas, 0, 0, canvas.width, canvas.height);
-                                }
-
-
-                                let lensX = 0, lensY = 0;
-
-                                function magnify(event) {
-                                    const { offsetX, offsetY } = event;
-                                    
-                                    gsap.to({ x: lensX, y: lensY }, {
-                                        x: offsetX,
-                                        y: offsetY,
-                                        duration: 0.1,
-                                        ease: "power2.out",
-                                        onUpdate: function () {
-                                            lensX = this.targets()[0].x;
-                                            lensY = this.targets()[0].y;
-                                            drawMagnifier(lensX, lensY);
-                                        }
-                                    });
-                                }
+                                    function magnify(event) {
+                                        const { offsetX, offsetY } = event;
+                                        
+                                        gsap.to({ x: lensX, y: lensY }, {
+                                            x: offsetX,
+                                            y: offsetY,
+                                            duration: 0.1,
+                                            ease: "power2.out",
+                                            onUpdate: function () {
+                                                lensX = this.targets()[0].x;
+                                                lensY = this.targets()[0].y;
+                                                drawMagnifier(lensX, lensY);
+                                            }
+                                        });
+                                    }
 
 
-                                // Load magnifying glass image
-                                const magnifierImg = new Image();
-                                magnifierImg.src = "./images/magnifying-glass.png"; // Update with your actual path
+                                    // Load magnifying glass image
+                                    const magnifierImg = new Image();
+                                    magnifierImg.src = "./images/magnifying-glass.png"; // Update with your actual path
 
-                                function drawMagnifier(x, y) {
-                                    // Redraw the normal text
+                                    function drawMagnifier(x, y) {
+                                        // Redraw the normal text
+                                        draw();
+                                        
+                                        // Erase the unzoomed text inside the circle
+                                        ctx.save();
+                                        ctx.beginPath();
+                                        ctx.arc(x, y, lensRadius, 0, Math.PI * 2);
+                                        ctx.clip();
+                                        ctx.globalCompositeOperation = "destination-out";
+                                        ctx.fillRect(x - lensRadius, y - lensRadius, lensRadius * 2, lensRadius * 2);
+                                        ctx.restore();
+                                        ctx.globalCompositeOperation = "source-over";
+                                        
+                                        // Draw the zoomed text inside the circle
+                                        ctx.save();
+                                        ctx.beginPath();
+                                        ctx.arc(x, y, lensRadius, 0, Math.PI * 2);
+                                        ctx.clip();
+                                        
+                                        ctx.drawImage(
+                                            offscreenCanvas,
+                                            (x - lensRadius / zoomFactor) * scaleFactor,
+                                            (y - lensRadius / zoomFactor) * scaleFactor,
+                                            (lensRadius * 2 / zoomFactor) * scaleFactor,
+                                            (lensRadius * 2 / zoomFactor) * scaleFactor,
+                                            x - lensRadius,
+                                            y - lensRadius,
+                                            lensRadius * 2,
+                                            lensRadius * 2
+                                        );
+                                        
+                                        ctx.restore();
+
+                                        // Draw the magnifying glass image at cursor position
+                                        const imageSize = lensRadius * 2; // Adjust if needed
+                                        ctx.drawImage(magnifierImg, x - imageSize / 2 - 2, y - imageSize / 2 - 8, 200, 270);
+                                    }
+
                                     draw();
-                                    
-                                    // Erase the unzoomed text inside the circle
-                                    ctx.save();
-                                    ctx.beginPath();
-                                    ctx.arc(x, y, lensRadius, 0, Math.PI * 2);
-                                    ctx.clip();
-                                    ctx.globalCompositeOperation = "destination-out";
-                                    ctx.fillRect(x - lensRadius, y - lensRadius, lensRadius * 2, lensRadius * 2);
-                                    ctx.restore();
-                                    ctx.globalCompositeOperation = "source-over";
-                                    
-                                    // Draw the zoomed text inside the circle
-                                    ctx.save();
-                                    ctx.beginPath();
-                                    ctx.arc(x, y, lensRadius, 0, Math.PI * 2);
-                                    ctx.clip();
-                                    
-                                    ctx.drawImage(
-                                        offscreenCanvas,
-                                        (x - lensRadius / zoomFactor) * scaleFactor,
-                                        (y - lensRadius / zoomFactor) * scaleFactor,
-                                        (lensRadius * 2 / zoomFactor) * scaleFactor,
-                                        (lensRadius * 2 / zoomFactor) * scaleFactor,
-                                        x - lensRadius,
-                                        y - lensRadius,
-                                        lensRadius * 2,
-                                        lensRadius * 2
-                                    );
-                                    
-                                    ctx.restore();
 
-                                    // Draw the magnifying glass image at cursor position
-                                    const imageSize = lensRadius * 2; // Adjust if needed
-                                    ctx.drawImage(magnifierImg, x - imageSize / 2 - 2, y - imageSize / 2 - 8, 200, 270);
-                                }
+                                    canvas.addEventListener("mousemove", magnify);
 
-                                draw();
+                                    //  Mouseleave Event
+                                    canvas.addEventListener("mouseleave", function () {                                    
 
-                                canvas.addEventListener("mousemove", magnify);
+                                        gsap.to({ x: lensX, y: lensY }, {
+                                            x: window.innerWidth - 200,
+                                            y: window.innerHeight / 2 - 200,
+                                            duration: 1,
+                                            ease: "power2.out",
+                                            onUpdate: function () {
+                                                lensX = this.targets()[0].x;
+                                                lensY = this.targets()[0].y;
+                                                drawMagnifier(lensX, lensY);
+                                            }
+                                        });
 
-                                //  Mouseleave Event
-                                canvas.addEventListener("mouseleave", function () {                                    
-
-                                    gsap.to({ x: lensX, y: lensY }, {
-                                        x: window.innerWidth - 200,
-                                        y: window.innerHeight / 2 - 200,
-                                        duration: 1,
-                                        ease: "power2.out",
-                                        onUpdate: function () {
-                                            lensX = this.targets()[0].x;
-                                            lensY = this.targets()[0].y;
-                                            drawMagnifier(lensX, lensY);
-                                        }
                                     });
 
+                                }).catch(function(error) {
+                                    console.error('Font loading failed:', error);
                                 });
+
+
+
 
 
                             }
@@ -1076,22 +1081,24 @@
                             });
 
                         //  Contact Section
-                            gsap.to("#contact-section-wave-svg textPath", {
-                              scrollTrigger: {
-                                trigger: "#contact-section",
-                                start: "top top",
-                                end: "+=1000",
-                                pin: true,
-                                pinSpacing: true,
-                                pinType: "fixed",
-                                scrub: 1,
-                                // markers: true
-                              },
-                              attr: { startOffset: "-100%" },
-                              ease: "none",
-                            });
-
-
+                            // Without setTimeout, this code will run before the canvas height is being set!! must wait after the canvas height is set 
+                            setTimeout(() => {
+                                console.log("This runs after 1 second");
+                                gsap.to("#contact-section-wave-svg textPath", {
+                                  scrollTrigger: {
+                                    trigger: "#contact-section",
+                                    start: "top top",
+                                    end: "+=1000",
+                                    pin: true,
+                                    pinSpacing: true,
+                                    pinType: "fixed",
+                                    scrub: 1,
+                                    // markers: true
+                                  },
+                                  attr: { startOffset: "-100%" },
+                                  ease: "none",
+                                });
+                            }, 1000);
 
                     }
 
@@ -1107,7 +1114,7 @@
 
                         //  Intro Video Timeline
                             const intro_video_loader_tl = gsap.timeline({ 
-                                delay: 1,
+                                delay: 0,
                             });
 
                             intro_video_loader_tl.call(() => {
@@ -1546,55 +1553,146 @@
 
 
                 //  Check DOMContentLoaded and load (assets (images, stylesheets, fonts, etc..) events are done
+                    // document.addEventListener("DOMContentLoaded", () => {
+                    //     console.log("DOM fully loaded and parsed");
+
+                    //     const progressBar = "#loading_progress_bar";
+                    //     const progressbar_loader_tl = gsap.timeline();
+
+                    //     // Initial progress to 30% when DOM is loaded
+                    //     progressbar_loader_tl.to(progressBar, {
+                    //         width: "30%",
+                    //         duration: 1,
+                    //         ease: "power4.inOut"
+                    //     });
+
+                    //     document.fonts.ready
+                    //         .then(() => {
+                    //             console.log("All fonts loaded");
+
+                    //             progressbar_loader_tl.to(progressBar, {
+                    //                 width: "60%",
+                    //                 duration: 1,
+                    //                 ease: "power4.inOut"
+                    //             });
+
+                    //             if (document.readyState === "complete") {
+                    //                 finalizeLoading();
+                    //             } else {
+                    //                 window.addEventListener("load", finalizeLoading, { once: true });
+                    //             }
+                    //         })
+                    //         .catch((err) => {
+                    //             console.warn("Font loading failed or unsupported:", err);
+                    //             // Fallback: Continue to the next phase if fonts don't load properly
+                    //             if (document.readyState === "complete") {
+                    //                 finalizeLoading();
+                    //             } else {
+                    //                 window.addEventListener("load", finalizeLoading, { once: true });
+                    //             }
+                    //         });
+
+                    //     function finalizeLoading() {
+                    //         console.log("Page fully loaded");
+                    //         progressbar_loader_tl.to(progressBar, {
+                    //             width: "100%",
+                    //             duration: 1,
+                    //             ease: "power4.inOut",
+                    //             onComplete: homePageFunc
+                    //         });
+                    //     }
+                    // });
+
+
                     document.addEventListener("DOMContentLoaded", () => {
-                        console.log("DOM fully loaded and parsed");
+    console.log("DOM fully loaded and parsed");
 
-                        const progressBar = "#loading_progress_bar";
-                        const tl = gsap.timeline();
+    const progressBar = document.querySelector("#loading_progress_bar");
+    const progressbar_loader_tl = gsap.timeline();
+    let loadedAssets = 0;
+    let totalAssets = 0;
 
-                        // Initial progress to 30% when DOM is loaded
-                        tl.to(progressBar, {
-                            width: "30%",
-                            duration: 1,
-                            ease: "power3.inOut"
-                        });
+    function updateProgress() {
+        const progress = (loadedAssets / totalAssets) * 100;
+        gsap.to(progressBar, {
+            width: `${progress}%`,
+            duration: 0.5,
+            ease: "power4.inOut"
+        });
 
-                        document.fonts.ready
-                            .then(() => {
-                                console.log("All fonts loaded");
+        if (progress >= 100) {
+            finalizeLoading();
+        }
+    }
 
-                                tl.to(progressBar, {
-                                    width: "60%",
-                                    duration: 1,
-                                    ease: "power3.inOut"
-                                });
+    function countAssets() {
+        const images = document.querySelectorAll("img");
+        const scripts = document.querySelectorAll("script[src]");
+        const links = document.querySelectorAll("link[rel='stylesheet']");
+        totalAssets = images.length + scripts.length + links.length;
 
-                                if (document.readyState === "complete") {
-                                    finalizeLoading();
-                                } else {
-                                    window.addEventListener("load", finalizeLoading, { once: true });
-                                }
-                            })
-                            .catch((err) => {
-                                console.warn("Font loading failed or unsupported:", err);
-                                // Fallback: Continue to the next phase if fonts don't load properly
-                                if (document.readyState === "complete") {
-                                    finalizeLoading();
-                                } else {
-                                    window.addEventListener("load", finalizeLoading, { once: true });
-                                }
-                            });
-
-                        function finalizeLoading() {
-                            console.log("Page fully loaded");
-                            tl.to(progressBar, {
-                                width: "100%",
-                                duration: 1,
-                                ease: "power3.inOut",
-                                onComplete: homePageFunc
-                            });
-                        }
+        if (totalAssets === 0) {
+            finalizeLoading();
+        } else {
+            images.forEach(img => {
+                if (img.complete) {
+                    loadedAssets++;
+                    updateProgress();
+                } else {
+                    img.addEventListener("load", () => {
+                        loadedAssets++;
+                        updateProgress();
                     });
+                    img.addEventListener("error", () => {
+                        loadedAssets++;
+                        updateProgress();
+                    });
+                }
+            });
+
+            scripts.forEach(script => {
+                script.addEventListener("load", () => {
+                    loadedAssets++;
+                    updateProgress();
+                });
+            });
+
+            links.forEach(link => {
+                link.addEventListener("load", () => {
+                    loadedAssets++;
+                    updateProgress();
+                });
+            });
+        }
+    }
+
+    document.fonts.ready.then(() => {
+        console.log("All fonts loaded");
+        loadedAssets++;
+        updateProgress();
+    }).catch(err => {
+        console.warn("Font loading failed or unsupported:", err);
+        loadedAssets++;
+        updateProgress();
+    });
+
+    window.addEventListener("load", () => {
+        loadedAssets = totalAssets;
+        updateProgress();
+    });
+
+    function finalizeLoading() {
+        console.log("Page fully loaded");
+        gsap.to(progressBar, {
+            width: "100%",
+            duration: 1,
+            ease: "power4.inOut",
+            onComplete: homePageFunc
+        });
+    }
+
+    countAssets();
+});
 
             })();
         </script>
