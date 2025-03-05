@@ -1083,7 +1083,6 @@
                         //  Contact Section
                             // Without setTimeout, this code will run before the canvas height is being set!! must wait after the canvas height is set 
                             setTimeout(() => {
-                                console.log("This runs after 1 second");
                                 gsap.to("#contact-section-wave-svg textPath", {
                                   scrollTrigger: {
                                     trigger: "#contact-section",
