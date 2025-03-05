@@ -1553,146 +1553,55 @@
 
 
                 //  Check DOMContentLoaded and load (assets (images, stylesheets, fonts, etc..) events are done
-                    // document.addEventListener("DOMContentLoaded", () => {
-                    //     console.log("DOM fully loaded and parsed");
-
-                    //     const progressBar = "#loading_progress_bar";
-                    //     const progressbar_loader_tl = gsap.timeline();
-
-                    //     // Initial progress to 30% when DOM is loaded
-                    //     progressbar_loader_tl.to(progressBar, {
-                    //         width: "30%",
-                    //         duration: 1,
-                    //         ease: "power4.inOut"
-                    //     });
-
-                    //     document.fonts.ready
-                    //         .then(() => {
-                    //             console.log("All fonts loaded");
-
-                    //             progressbar_loader_tl.to(progressBar, {
-                    //                 width: "60%",
-                    //                 duration: 1,
-                    //                 ease: "power4.inOut"
-                    //             });
-
-                    //             if (document.readyState === "complete") {
-                    //                 finalizeLoading();
-                    //             } else {
-                    //                 window.addEventListener("load", finalizeLoading, { once: true });
-                    //             }
-                    //         })
-                    //         .catch((err) => {
-                    //             console.warn("Font loading failed or unsupported:", err);
-                    //             // Fallback: Continue to the next phase if fonts don't load properly
-                    //             if (document.readyState === "complete") {
-                    //                 finalizeLoading();
-                    //             } else {
-                    //                 window.addEventListener("load", finalizeLoading, { once: true });
-                    //             }
-                    //         });
-
-                    //     function finalizeLoading() {
-                    //         console.log("Page fully loaded");
-                    //         progressbar_loader_tl.to(progressBar, {
-                    //             width: "100%",
-                    //             duration: 1,
-                    //             ease: "power4.inOut",
-                    //             onComplete: homePageFunc
-                    //         });
-                    //     }
-                    // });
-
-
                     document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM fully loaded and parsed");
+                        console.log("DOM fully loaded and parsed");
 
-    const progressBar = document.querySelector("#loading_progress_bar");
-    const progressbar_loader_tl = gsap.timeline();
-    let loadedAssets = 0;
-    let totalAssets = 0;
+                        const progressBar = "#loading_progress_bar";
+                        const progressbar_loader_tl = gsap.timeline();
 
-    function updateProgress() {
-        const progress = (loadedAssets / totalAssets) * 100;
-        gsap.to(progressBar, {
-            width: `${progress}%`,
-            duration: 0.5,
-            ease: "power4.inOut"
-        });
+                        // Initial progress to 30% when DOM is loaded
+                        progressbar_loader_tl.to(progressBar, {
+                            width: "30%",
+                            duration: 1,
+                            ease: "power4.inOut"
+                        });
 
-        if (progress >= 100) {
-            finalizeLoading();
-        }
-    }
+                        document.fonts.ready
+                            .then(() => {
+                                console.log("All fonts loaded");
 
-    function countAssets() {
-        const images = document.querySelectorAll("img");
-        const scripts = document.querySelectorAll("script[src]");
-        const links = document.querySelectorAll("link[rel='stylesheet']");
-        totalAssets = images.length + scripts.length + links.length;
+                                progressbar_loader_tl.to(progressBar, {
+                                    width: "60%",
+                                    duration: 1,
+                                    ease: "power4.inOut"
+                                });
 
-        if (totalAssets === 0) {
-            finalizeLoading();
-        } else {
-            images.forEach(img => {
-                if (img.complete) {
-                    loadedAssets++;
-                    updateProgress();
-                } else {
-                    img.addEventListener("load", () => {
-                        loadedAssets++;
-                        updateProgress();
+                                if (document.readyState === "complete") {
+                                    finalizeLoading();
+                                } else {
+                                    window.addEventListener("load", finalizeLoading, { once: true });
+                                }
+                            })
+                            .catch((err) => {
+                                console.warn("Font loading failed or unsupported:", err);
+                                // Fallback: Continue to the next phase if fonts don't load properly
+                                if (document.readyState === "complete") {
+                                    finalizeLoading();
+                                } else {
+                                    window.addEventListener("load", finalizeLoading, { once: true });
+                                }
+                            });
+
+                        function finalizeLoading() {
+                            console.log("Page fully loaded");
+                            progressbar_loader_tl.to(progressBar, {
+                                width: "100%",
+                                duration: 1,
+                                ease: "power4.inOut",
+                                onComplete: homePageFunc
+                            });
+                        }
                     });
-                    img.addEventListener("error", () => {
-                        loadedAssets++;
-                        updateProgress();
-                    });
-                }
-            });
-
-            scripts.forEach(script => {
-                script.addEventListener("load", () => {
-                    loadedAssets++;
-                    updateProgress();
-                });
-            });
-
-            links.forEach(link => {
-                link.addEventListener("load", () => {
-                    loadedAssets++;
-                    updateProgress();
-                });
-            });
-        }
-    }
-
-    document.fonts.ready.then(() => {
-        console.log("All fonts loaded");
-        loadedAssets++;
-        updateProgress();
-    }).catch(err => {
-        console.warn("Font loading failed or unsupported:", err);
-        loadedAssets++;
-        updateProgress();
-    });
-
-    window.addEventListener("load", () => {
-        loadedAssets = totalAssets;
-        updateProgress();
-    });
-
-    function finalizeLoading() {
-        console.log("Page fully loaded");
-        gsap.to(progressBar, {
-            width: "100%",
-            duration: 1,
-            ease: "power4.inOut",
-            onComplete: homePageFunc
-        });
-    }
-
-    countAssets();
-});
 
             })();
         </script>
