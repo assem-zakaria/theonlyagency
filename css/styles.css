@@ -125,15 +125,6 @@ Version: 1.00
             overflow: hidden;
         }
 
-        /* ::selection {
-            background-color: rgb(0, 221, 253);
-            color: #002af5;
-        }
-        ::-moz-selection {
-            background-color: rgb(0, 221, 253);
-            color: #002af5;
-        }
- */
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -156,114 +147,6 @@ Version: 1.00
 
 
 
-/* HEADER */
-    header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 11;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 40px;
-        will-change: transform;
-        /* Makes the menu shakes */
-        mix-blend-mode: difference;
-        display: none;
-    }
-
-    header #header_logo_link {
-        width: fit-content;
-        display: flex;
-        height: fit-content;
-    }
-
-    header #header_logo_link svg {
-        width: 170px;
-        fill: white;
-    }
-
-
-
-
-
-
-
-/*
-================================================================
-================================================================
-    Intro Loader
-================================================================
-================================================================
-*/
-
-
-    #black_intro_div {
-        background-color: black;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        z-index: 99;
-        transition: all 500ms cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    }
-
-    #black_intro_div.hide_black_intro {
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    /* Intro Loader SVG */
-        #theonlyagency_intro_SVG {
-            display: none;
-            height: 100vh;
-            width: 100vw;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 99;
-            box-sizing: border-box;
-            clip-path: inset(0 0 0 0);
-            pointer-events: none;
-        }
-
-        #mobile_theonlyagency_intro_SVG {
-            display: none;
-        }
-
-        @media only screen and (max-width : 1024px) {
-         
-            #theonlyagency_intro_SVG {
-                display: none;
-            }
-            
-            #mobile_theonlyagency_intro_SVG {
-                display: none;
-                position: fixed;
-                width: 100vw;
-                height: 100vh;
-                border: 2px red dashed;
-                z-index: 99;
-            }
-        }
-
-
-
-        #theonlyagency_intro_SVG.hide_intro {
-            opacity: 0;
-        }
-
-
-        #Top_Text_Group path,
-        #Bottom_Text_Group path,
-        #Stroked_Logo_Mid,
-        #Stroked_Logo_Right,
-        #Stroked_Logo_Left,
-        #Blue_Logo { 
-            opacity: 0; 
-        }
 
 
     /* Fake Content */
@@ -275,8 +158,36 @@ Version: 1.00
             height: 100vh;
         }
 
-    /* Intro Video */
 
+
+    /* Black Intro Div */
+        #black_intro_div {
+            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            z-index: 99;
+            transition: all 500ms cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+
+        #black_intro_div.hide_black_intro {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+       #black_intro_div #loading_progress_bar {
+            height: 50px;
+            width: 0%;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+       } 
+
+    /* Intro Video */
         #svg_video_el {
             width: 100vw;
             height: 100vh;
@@ -394,7 +305,7 @@ Version: 1.00
             text-align: center;
         }
 
-        #hero-section #line-separator {
+        #hero-section hr {
             height: 4px;
             width: 160px;
             margin-bottom: 15px;
@@ -605,7 +516,6 @@ Version: 1.00
             animation: planetRockAnimation 6s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite;
         }
 
-
     /* Projects Grid */
         .projects-grid {
             padding: 50px 0;
@@ -689,7 +599,6 @@ Version: 1.00
             font-size: 15px;
             line-height: 25px;
             color: white;
-            font-family: Gotham Light;
         }
 
     /* Creative Projects Slider */
@@ -725,8 +634,6 @@ Version: 1.00
             transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
             will-change: transform;
         }
-
-
 
         .creative-projects-slider .swiper-button-prev, 
         .creative-projects-slider .swiper-button-next {
@@ -774,7 +681,6 @@ Version: 1.00
             z-index: 1;
         }
 
-
         .creative-projects-slider .swiper-slide .slide-white-overlay {
             background-color: white;
             opacity: 0.5;
@@ -791,7 +697,7 @@ Version: 1.00
             opacity: 0;
         }
 
-        .creative-projects-slider .swiper-slide img.slide-img-dekstop {
+        .creative-projects-slider .swiper-slide img.slide-img-dekstop { /* Show desktop wide images and hide mobile narrow images */
             object-fit: cover;
             object-position: center;
             width: 100%;
@@ -819,8 +725,6 @@ Version: 1.00
             transform: translateY(0%);
             opacity: 1;
         }
-
-        
 
         .creative-projects-slider .swiper-slide .slide-info a {
             font-size: 16px;
@@ -858,13 +762,12 @@ Version: 1.00
             cursor: none;
         }
 
-        .about-us #about-us-text-cont {
+        .about-us #about-us-text-cont { /* Hide html element in desktop, only show canvas */
             padding: 75px;
             overflow: hidden;
             display: none;
             position: relative;
         }
-
 
         .about-us h4 {
             color: white;
@@ -903,7 +806,6 @@ Version: 1.00
             color: white;
             font-size: 25px;
             line-height: 31px;
-            font-family: Gotham Light;
         }
 
         .about-us .about-us-description p:not(:last-of-type) {
@@ -995,12 +897,13 @@ Version: 1.00
             display: flex;
             flex-direction: column;
             justify-content: center;
+            gap: 40px;
             padding-bottom: 50px;
         }
 
         #contact-section #contact-section-wave-svg {
             width: 100vw;
-            height: 400px;
+            height: 30vh;
             pointer-events: none;
             z-index: 2;
         }
@@ -1108,14 +1011,10 @@ Version: 1.00
             animation: eyesAnimation 3s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite;
         }
 
-
-
         #contact-bottom-cont #contact-text {
             display: flex;
             flex-direction: column;
         }
-
-
 
         #contact-bottom-cont #contact-text h5 {
             font-size: 45px;
@@ -1168,8 +1067,6 @@ Version: 1.00
 
 
 
-
-
 /*
 ================================================================
 ================================================================
@@ -1205,6 +1102,10 @@ Version: 1.00
 
                 #hero-section #hero-section-wrapper {
                     align-items: flex-start;
+                }
+
+                #planet-wrapper {
+                    transform: scale(0.8);
                 }
 
                 #hero-section #planet-el {
@@ -1276,16 +1177,59 @@ Version: 1.00
                     opacity: 1;
                 }
 
-            /* About Us */
-                .about-us {
-                    
+            /* Creative Projects Slider */
+                .creative-projects-slider .swiper-slide {
+                    height: 80vh;
                 }
 
+                .creative-projects-slider .swiper-button-prev, 
+                .creative-projects-slider .swiper-button-next {
+                    display: flex;
+                    width: fit-content;
+                    box-sizing: content-box;
+                }
+
+                .creative-projects-slider .swiper-slide .slide-info {
+                    flex-direction: column-reverse;
+                    text-align: center;
+                    left: 50%;
+                    bottom: 30px;
+                    transform: translateX(-50%) translateY(50px);
+                    width: 100%;
+                    padding: 0 20px;
+                    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+                }
+
+                .creative-projects-slider .swiper-slide.swiper-slide-active .slide-info {
+                    transform: translateX(-50%) translateY(0);
+                }
+
+                .creative-projects-slider .swiper-slide .slide-overlay {
+                    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 70%);
+                }
+
+                .creative-projects-slider .swiper-slide .slide-white-overlay {
+                    transition: opacity 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+                }
+
+                .creative-projects-slider .swiper-slide img.slide-img-dekstop { /* Hide desktop wide images and show mobile narrow images */
+                    display: none;
+                }
+
+                .creative-projects-slider .swiper-slide img.slide-img-mobile {
+                    display: flex;
+                    object-fit: cover;
+                    object-position: center;
+                    width: 100%;
+                    height: 100%;
+                }
+
+            /* About Us */
                 .about-us #myCanvas {
                     display: none;
                 }
 
-                .about-us #about-us-text-cont {
+                .about-us #about-us-text-cont { /* Show html element on mobile and hide canvas */
                     display: block;
                     padding: 30px;
                 }
@@ -1337,55 +1281,7 @@ Version: 1.00
                     width: 100%;
                 }
 
-            /* Creative Projects Slider */
-                .creative-projects-slider .swiper-slide {
-                    height: 80vh;
-                }
-
-                .creative-projects-slider .swiper-button-prev, 
-                .creative-projects-slider .swiper-button-next {
-                    display: flex;
-                    width: fit-content;
-                    box-sizing: content-box;
-                }
-
-                .creative-projects-slider .swiper-slide .slide-info {
-                    flex-direction: column-reverse;
-                    text-align: center;
-                    left: 50%;
-                    bottom: 30px;
-                    transform: translateX(-50%) translateY(50px);
-                    width: 100%;
-                    padding: 0 20px;
-                    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-                }
-
-                .creative-projects-slider .swiper-slide.swiper-slide-active .slide-info {
-                    transform: translateX(-50%) translateY(0);
-                }
-
-                .creative-projects-slider .swiper-slide .slide-overlay {
-                    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 70%);
-                }
-
-                .creative-projects-slider .swiper-slide .slide-white-overlay {
-                    transition: opacity 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-                }
-
-                .creative-projects-slider .swiper-slide img.slide-img-dekstop {
-                    display: none;
-                }
-
-                .creative-projects-slider .swiper-slide img.slide-img-mobile {
-                    display: flex;
-                    object-fit: cover;
-                    object-position: center;
-                    width: 100%;
-                    height: 100%;
-                }
-
             /* Contact Section */
-
                 #contact-section #contact-section-wave-svg {
                     height: 220px;
                 }
