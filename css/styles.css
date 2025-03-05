@@ -178,14 +178,14 @@ Version: 1.00
         }
 
        #black_intro_div #loading_progress_bar {
-            height: 50px;
+            height: 10px;
             width: 0%;
-            background-color: red;
+            background-color: rgb(0, 223, 255);
             position: absolute;
             left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-       } 
+            bottom: 0;
+       }
+
 
     /* Intro Video */
         #svg_video_el {
@@ -1101,11 +1101,12 @@ Version: 1.00
                 }
 
                 #hero-section #hero-section-wrapper {
-                    align-items: flex-start;
+/*                     align-items: flex-start; */
                 }
 
                 #planet-wrapper {
                     transform: scale(0.8);
+                    justify-content: center;
                 }
 
                 #hero-section #planet-el {
