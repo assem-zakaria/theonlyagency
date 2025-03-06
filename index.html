@@ -19,7 +19,6 @@
 
     <!--  Begin Black Intro Div  -->
         <div id="black_intro_div">
-            <div id="loading_progress_bar"></div>
         </div>
     <!--  End Black Intro Div  -->
 
@@ -993,7 +992,11 @@
 
                             }
 
-                            aboutsUsCanvasFunc();
+                            // aboutsUsCanvasFunc();
+
+                            setTimeout(() => {
+                                aboutsUsCanvasFunc();
+                            }, 2000);
 
                         //  Our Clients
                             // gsap.to(".our-clients", {
@@ -1112,8 +1115,6 @@
                               attr: { startOffset: "-100%" },
                               ease: "none",
                             });
-
-
 
                     }
 
@@ -1522,7 +1523,6 @@
                         //  GSAP Config
                             gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
                             gsap.config({ force3D: true, trialWarn: false });
-                            // ScrollTrigger.config({ ignoreMobileResize: true, fastScrollEnd: true });
 
                         //  Update ScrollTrigger on resize
                             // let resizeTimeout;
@@ -1547,76 +1547,24 @@
                     }
 
                 //  Check DOMContentLoaded and load (assets (images, stylesheets, fonts, etc..) events are done
-                    // document.addEventListener("DOMContentLoaded", () => {
-                    //     console.log("DOM fully loaded and parsed");
-
-                    //     // Wait for all fonts to be fully loaded
-                    //     document.fonts.ready.then(() => {
-                    //         console.log("All fonts loaded");
-
-                    //         setTimeout(() => {
-                    //             // Check if the load event has already fired
-                    //             if (document.readyState === "complete") {
-                    //                 homePageFunc();
-                    //             } else {
-                    //                 window.addEventListener("load", homePageFunc);
-                    //             }
-                    //         }, 500);
-
-                    //     });
-                    // });
-
-
-                //  Check DOMContentLoaded and load (assets (images, stylesheets, fonts, etc..) events are done
                     document.addEventListener("DOMContentLoaded", () => {
                         console.log("DOM fully loaded and parsed");
 
-                        const progressBar = "#loading_progress_bar";
-                        const progressbar_loader_tl = gsap.timeline();
+                        // Wait for all fonts to be fully loaded
+                        document.fonts.ready.then(() => {
+                            console.log("All fonts loaded");
 
-                        // Initial progress to 30% when DOM is loaded
-                        progressbar_loader_tl.to(progressBar, {
-                            width: "30%",
-                            duration: 1,
-                            ease: "power4.inOut"
+                            // Check if the load event has already fired
+                            if (document.readyState === "complete") {
+                                homePageFunc();
+                            } else {
+                                window.addEventListener("load", homePageFunc);
+                            }
+
                         });
-
-                        document.fonts.ready
-                            .then(() => {
-                                console.log("All fonts loaded");
-
-                                progressbar_loader_tl.to(progressBar, {
-                                    width: "60%",
-                                    duration: 1,
-                                    ease: "power4.inOut"
-                                });
-
-                                if (document.readyState === "complete") {
-                                    finalizeLoading();
-                                } else {
-                                    window.addEventListener("load", finalizeLoading, { once: true });
-                                }
-                            })
-                            .catch((err) => {
-                                console.warn("Font loading failed or unsupported:", err);
-                                // Fallback: Continue to the next phase if fonts don't load properly
-                                if (document.readyState === "complete") {
-                                    finalizeLoading();
-                                } else {
-                                    window.addEventListener("load", finalizeLoading, { once: true });
-                                }
-                            });
-
-                        function finalizeLoading() {
-                            console.log("Page fully loaded");
-                            progressbar_loader_tl.to(progressBar, {
-                                width: "100%",
-                                duration: 1,
-                                ease: "power4.inOut",
-                                onComplete: homePageFunc
-                            });
-                        }
                     });
+
+
 
             })();
         </script>
